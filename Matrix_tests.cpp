@@ -32,6 +32,7 @@ TEST(test_init) {
   Matrix_init(&mat, 3, 4);
   ASSERT_EQUAL(Matrix_width(&mat), 3);
   ASSERT_EQUAL(Matrix_height(&mat), 4);
+  cout<<"INIT PASS";
 }
 
 TEST(test_read_write) {
@@ -41,6 +42,7 @@ TEST(test_read_write) {
   ASSERT_EQUAL(*Matrix_at(&mat,1,1),7);
   const Matrix* cmat = &mat;
   ASSERT_EQUAL(*Matrix_at(cmat,1,1),7);
+  cout<<"READ WRITE PASS";
 }
 
 TEST(test_fill_border) {
@@ -54,6 +56,7 @@ TEST(test_fill_border) {
   ASSERT_EQUAL(*Matrix_at(&mat,2,3),9);
   ASSERT_EQUAL(*Matrix_at(&mat,1,1),0); //for the inside
   ASSERT_EQUAL(*Matrix_at(&mat,1,2),0);
+  cout<<"FILL BORDER PASS";
 }
 
 TEST(test_max) {
@@ -63,6 +66,7 @@ TEST(test_max) {
   *Matrix_at(&mat,2,1) = 42;
   *Matrix_at(&mat,0,2) = 17;
   ASSERT_EQUAL(Matrix_max(&mat),42);
+  cout<<"MAX PASS";
 }
 
 TEST(test_min_funcs) {
@@ -75,7 +79,9 @@ TEST(test_min_funcs) {
   *Matrix_at(&mat,0,4)=2;
   ASSERT_EQUAL(Matrix_min_value_in_row(&mat,0,0,5),1);
   ASSERT_EQUAL(Matrix_column_of_min_value_in_row(&mat,0,0,5),2); 
+  cout<<"MIN FUNCS PASS";
 }
+
 TEST(test_print) {
   Matrix mat;
   Matrix_init(&mat, 2, 2);
@@ -88,5 +94,6 @@ TEST(test_print) {
   correct<<"1 2 \n";
   correct<<"3 4 \n";
   ASSERT_EQUAL(out.str(),correct.str());
+  cout<<"PRINT PASS";
 }
 TEST_MAIN() // Do NOT put a semicolon here

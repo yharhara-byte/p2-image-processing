@@ -46,7 +46,9 @@ TEST(test_image_init) {
   Image_init(&img,3,2);
   ASSERT_EQUAL(Image_width(&img),3);
   ASSERT_EQUAL(Image_height(&img),2);
+  cout<<"INIT PASS";
 }
+
 TEST(test_image_setter_getter) {
   Image img;
   Image_init(&img,2,2);
@@ -56,6 +58,7 @@ TEST(test_image_setter_getter) {
   ASSERT_EQUAL(q.r,7);
   ASSERT_EQUAL(q.g,8);
   ASSERT_EQUAL(q.b,9);
+  cout<<"SETTER AND GETTER PASS";
 }
 
 TEST(test_fill) {
@@ -71,7 +74,9 @@ TEST(test_fill) {
       ASSERT_EQUAL(q.b,30);
     }
   }
+    cout<<"FILL PASS";
 }
+
 TEST(test_image_print) {
   Image img;
   Image_init(&img,2,1);
@@ -85,5 +90,7 @@ TEST(test_image_print) {
   correct<<"P3\n2 1\n255\n";
   correct<<"0 0 0 255 128 64 \n";
   ASSERT_EQUAL(out.str(),correct.str());
+  cout<<"PRINT PASS";
 }
+
 TEST_MAIN() // Do NOT put a semicolon here

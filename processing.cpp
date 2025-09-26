@@ -170,7 +170,8 @@ vector<int> find_minimal_vertical_seam(const Matrix* cost) {
 
   vector<int> seam(matheight);
 
-  int min_cost_column = Matrix_column_of_min_value_in_row(cost, matheight-1, 0, matwidth);
+  int min_cost_column = 
+      Matrix_column_of_min_value_in_row(cost, matheight-1, 0, matwidth);
   seam[matheight-1]= min_cost_column;
   int starting, ending;
 
@@ -180,7 +181,8 @@ vector<int> find_minimal_vertical_seam(const Matrix* cost) {
     starting = (min_cost_column > 0) ? min_cost_column - 1 : 0;
     ending = (min_cost_column + 2 < matwidth) ? min_cost_column + 2 : matwidth;
     
-    min_cost_column = Matrix_column_of_min_value_in_row(cost, row, starting, ending);
+    min_cost_column = 
+        Matrix_column_of_min_value_in_row(cost, row, starting, ending);
     seam[row] = min_cost_column;
   }
 
