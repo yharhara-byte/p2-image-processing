@@ -94,16 +94,16 @@ const int IMG_HEIGHT = Image_height(img);
 Matrix_init(energy, IMG_WIDTH, IMG_HEIGHT);
 
 int max_energy = 0;
-  if (IMG_WIDTH >2 && IMG_HEIGHT >2){
-    for (int r=1; r<(Image_height(img)-2); r++){
-      for (int c=1; c<(Image_width(img)-2); c++){
+  if (IMG_WIDTH >=3 && IMG_HEIGHT >=3){
+    for (int r=1; r<=(IMG_HEIGHT-2); r++){
+      for (int c=1; c<=(IMG_WIDTH-2); c++){
         Pixel n = Image_get_pixel(img, r-1, c);
         Pixel e = Image_get_pixel(img, r, c+1);
         Pixel s = Image_get_pixel(img, r+1, c);
         Pixel w = Image_get_pixel(img, r, c-1);
 
         int energy_value =squared_difference(w, e) + squared_difference(n, s);
-        *Matrix_at(energy, r, c);
+        *Matrix_at(energy, r, c) = energy_value;
         if(energy_value > max_energy)
           max_energy = energy_value;
       }
