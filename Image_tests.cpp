@@ -41,5 +41,49 @@ TEST(test_print_basic) {
 
 // IMPLEMENT YOUR TEST FUNCTIONS HERE
 // You are encouraged to use any functions from Image_test_helpers.hpp as needed.
+TEST(test_image_init) {
+  Image img;
+  Image_init(&img,3,2);
+  ASSERT_EQUAL(Image_width(&img),3);
+  ASSERT_EQUAL(Image_height(&img),2);
+}
+TEST(test_image_setter_getter) {
+  Image img;
+  Image_init(&img,2,2);
+  Pixel p={7,8,9};
+  Image_set_pixel(&img,1,0,p);
+  Pixel q=Image_get_pixel(&img,1,0);
+  ASSERT_EQUAL(q.r,7);
+  ASSERT_EQUAL(q.g,8);
+  ASSERT_EQUAL(q.b,9);
+}
 
+TEST(test_fill) {
+  Image img;
+  Image_init(&img,3,2);
+  Pixel c={10,20,30};
+  Image_fill(&img,c);
+  for(int r=0;r<Image_height(&img);r++){
+    for(int ccol=0;ccol<Image_width(&img);ccol++){
+      Pixel q=Image_get_pixel(&img,r,ccol);
+      ASSERT_EQUAL(q.r,10);
+      ASSERT_EQUAL(q.g,20);
+      ASSERT_EQUAL(q.b,30);
+    }
+  }
+}
+TEST(test_image_print) {
+  Image img;
+  Image_init(&img,2,1);
+  Pixel a={0,0,0};
+  Pixel b={255,128,64};
+  Image_set_pixel(&img,0,0,a);
+  Image_set_pixel(&img,0,1,b);
+  ostringstream out;
+  Image_print(&img,out);
+  ostringstream correct;
+  correct<<"P3\n2 1\n255\n";
+  correct<<"0 0 0 255 128 64 \n";
+  ASSERT_EQUAL(out.str(),correct.str());
+}
 TEST_MAIN() // Do NOT put a semicolon here
