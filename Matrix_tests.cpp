@@ -79,6 +79,8 @@ TEST(test_min_funcs) {
   *Matrix_at(&mat,0,4)=2;
   ASSERT_EQUAL(Matrix_min_value_in_row(&mat,0,0,5),1);
   ASSERT_EQUAL(Matrix_column_of_min_value_in_row(&mat,0,0,5),2); 
+  ASSERT_EQUAL(Matrix_min_value_in_row(&mat,0,1,4),1);
+  ASSERT_EQUAL(Matrix_column_of_min_value_in_row(&mat,0,1,4),2);
   cout<<"MIN FUNCS PASS";
 }
 

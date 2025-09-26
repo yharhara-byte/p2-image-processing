@@ -93,4 +93,20 @@ TEST(test_image_print) {
   cout<<"PRINT PASS";
 }
 
+TEST(test_image_orientation) {
+  Image img;
+  Image_init(&img,3,2);
+  Pixel A={1,0,0},B={0,1,0},C={0,0,1};
+  Image_set_pixel(&img,0,0,A);
+  Image_set_pixel(&img,0,2,B);
+  Image_set_pixel(&img,1,1,C);
+  Pixel p00=Image_get_pixel(&img,0,0);
+  Pixel p02=Image_get_pixel(&img,0,2);
+  Pixel p11=Image_get_pixel(&img,1,1);
+  ASSERT_EQUAL(p00.r,1);
+  ASSERT_EQUAL(p02.g,1);
+  ASSERT_EQUAL(p11.b,1);
+  cout<<"ORIENTATION PASS";
+}
+
 TEST_MAIN() // Do NOT put a semicolon here
