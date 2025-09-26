@@ -13,9 +13,9 @@ void Image_init(Image* img, int width, int height) {
   img -> width = width;
   img -> height = height;
 
-  Matrix_init(&img -> red_channel, height, width);
-  Matrix_init(&img -> green_channel, height, width);
-  Matrix_init(&img -> blue_channel, height, width);
+  Matrix_init(&img -> red_channel, width, height);
+  Matrix_init(&img -> green_channel, width, height);
+  Matrix_init(&img -> blue_channel, width, height);
 
   Pixel black = {0,0,0};
   Image_fill(img, black);

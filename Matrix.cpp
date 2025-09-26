@@ -9,7 +9,7 @@
 void Matrix_init(Matrix* mat, int width, int height) {
 mat->height = height;
 mat->width = width;
-mat->data.push_back(width*height);
+mat->data.assign(width*height, 0);
 }
 
 // REQUIRES: mat points to a valid Matrix
@@ -22,9 +22,9 @@ mat->data.push_back(width*height);
 //           the end of each line.
 void Matrix_print(const Matrix* mat, std::ostream& os) {
   os<<mat->width<<" "<<mat->height<<std::endl;
-  for (int w = 0; w < mat->width; w++)
+  for (int h = 0; h < mat->height; h++)
   {
-    for (int h = 0; h < mat->height; h++)
+    for (int w = 0; w < mat->width; w++)
     {
       os<<mat->data[h * mat->width + w] << " ";    
     }
